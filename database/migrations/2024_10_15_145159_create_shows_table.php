@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('shows', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('image');
+            $table->string('genre');
             $table->text('overview')->nullable();
             $table->string('where_to_watch');
-            $table->integer('number_of_episodes');
+            $table->text('number_of_episodes');
             $table->integer('air_date');
-            $table->integer('end_date');
+            $table->text('end_date');
             $table->timestamps();
         });
     }
