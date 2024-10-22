@@ -12,7 +12,8 @@ class ShowController extends Controller
      */
     public function index()
     {
-        //
+        $shows = Show::all(); //Fetches all shows
+        return view('shows.index', compact('shows')); //return the view with shows
     }
 
     /**
@@ -36,7 +37,7 @@ class ShowController extends Controller
      */
     public function show(Show $show)
     {
-        //
+        return view('shows.show')->with('show',$show);
     }
 
     /**
@@ -62,4 +63,9 @@ class ShowController extends Controller
     {
         //
     }
+
+    /**
+     * Calls the Show Model's all () method
+     */
+
 }

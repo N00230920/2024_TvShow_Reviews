@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ShowController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,5 +19,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/shows',[ShowController::class,'index'])->name('shows.index');
+Route::get('/shows/{show}',[ShowController::class, 'show'])->name('shows.show');
 
 require __DIR__.'/auth.php';
