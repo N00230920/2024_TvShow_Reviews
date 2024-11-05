@@ -21,7 +21,7 @@ class ShowController extends Controller
      */
     public function create()
     {
-        //
+        return view('shows.create');
     }
 
     /**
@@ -29,7 +29,35 @@ class ShowController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate input
+        /*$request->validate({
+            'title'=>"required",
+            'image'=>"required|image|mimes:jpeg,png,jgp,gif|max:2048",
+            'genre'=>"required",
+            'overview'=>"required|max:1000",
+            'where_to_watch'=>"required|max:50",
+            'number_of_episodes'=>"required|integer",
+            'air_date'=>"required|integer|max:5",
+            'end_date'=>"required",
+        });
+
+        // check if the image is uploaded and handle it
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images/shows'), $imageName);
+        }
+        // Create a show record in the database
+        Show::create([
+            'title' => $request->title,
+            'image' => $request->imageName,
+            'genre' => $request->genre,
+            'overview' => $request->overview,
+            'where_to_watch' => $request->where_to_watch,
+            'number_of_episodes' => $request->number_of_episodes,
+            'air_date' => $request->air_date,
+            'end_date' => $request->end_date
+        ]);*/
+        // redi
     }
 
     /**

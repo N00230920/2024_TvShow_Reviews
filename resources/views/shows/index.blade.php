@@ -23,7 +23,8 @@
                                 :air_date="$show->air_date"
                                 :end_date="$show->end_date"
                                 
-                            />    
+                            />   
+                        </a> 
                         @endforeach
                     </div>
                 </div>

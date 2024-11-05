@@ -18,6 +18,10 @@
                     <x-nav-link :href="route('shows.index')" :active="request()->routeIs('shows.index')">
                         {{ __('View All Shows') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('shows.create')" :active="request()->routeIs('shows.create')">
+                        {{ __('Create New Show') }}
+                    </x-nav-link>
                 </div>
             </div>
 

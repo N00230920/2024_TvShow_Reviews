@@ -19,6 +19,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/shows',[ShowController::class,'index'])->name('shows.index');
+Route::get('/shows/create',[ShowController::class, 'create'])->name('shows.create');
 Route::get('/shows/{show}',[ShowController::class, 'show'])->name('shows.show');
+
+Route::post('/shows',[ShowController::class, 'store'])->name('shows.store');
 
 require __DIR__.'/auth.php';
