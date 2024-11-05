@@ -25,6 +25,12 @@
                 </div>
             </div>
 
+
+            <!-- alert success is a component that i created to display a success message that is sent by the controller to give feedback to the user -->
+    <x-alert-success>
+            {{ session('success') }}
+        </x-alert-success>
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">

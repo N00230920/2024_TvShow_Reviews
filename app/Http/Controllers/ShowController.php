@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Show;
 use Illuminate\Http\Request;
+use Illiminate\Support\Facades\Storage;
 
 class ShowController extends Controller
 {
@@ -29,17 +30,17 @@ class ShowController extends Controller
      */
     public function store(Request $request)
     {
-        // validate input
-        /*$request->validate({
-            'title'=>"required",
-            'image'=>"required|image|mimes:jpeg,png,jgp,gif|max:2048",
-            'genre'=>"required",
-            'overview'=>"required|max:1000",
-            'where_to_watch'=>"required|max:50",
-            'number_of_episodes'=>"required|integer",
-            'air_date'=>"required|integer|max:5",
-            'end_date'=>"required",
-        });
+        //  validate input
+        $request->validate([
+            'title'=>'required',
+            'image'=>'required|image|mimes:jpeg,png,jgp,gif|max:2048',
+            'genre'=>'required',
+            'overview'=>'required|max:1000',
+            'where_to_watch'=>'required|max:50',
+            'number_of_episodes'=>'required|integer',
+            'air_date'=>'required|integer|max:3000',
+            'end_date'=>'required|integer|max:3000',
+        ]);
 
         // check if the image is uploaded and handle it
         if ($request->hasFile('image')) {
@@ -49,15 +50,18 @@ class ShowController extends Controller
         // Create a show record in the database
         Show::create([
             'title' => $request->title,
-            'image' => $request->imageName,
+            'image' =>$imageName,
             'genre' => $request->genre,
             'overview' => $request->overview,
             'where_to_watch' => $request->where_to_watch,
             'number_of_episodes' => $request->number_of_episodes,
             'air_date' => $request->air_date,
-            'end_date' => $request->end_date
-        ]);*/
-        // redi
+            'end_date' => $request->end_date,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        // redirect to the index page with a successful message
+        return to_route('shows.index')->with('sucess', 'Show created successfully!');
     }
 
     /**
