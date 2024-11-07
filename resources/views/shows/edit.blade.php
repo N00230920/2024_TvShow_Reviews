@@ -12,7 +12,7 @@
                     <h3 class="font-semibold text-lg mb-4">Edit New Book:</h3>
 
                     <!-- Using the ShowForm component for show creation -->
-                     <x-show-date_format
+                     <x-show-form
                         :action="route('shows.update', $show)"
                         :method="'PUT'"
                         :show="$show"

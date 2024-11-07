@@ -17,7 +17,7 @@ class ShowSeeder extends Seeder
         $currentTimestamp = Carbon::now();
         Show::insert([
         ['title' => 'Adventure Time',
-        'image' => 'images/Adventure_Time.png',
+        'image' => 'Adventure_Time.png',
         'genre' => 'Action',
         'overview' => 'Twelve- year-old Finn battles evil in the Land of Ooo. Assisted by his magical dog, Jake, Finn roams the Land of Ooo righting wrongs and battling evil.',
         'where_to_watch' => 'Netflix',
@@ -29,7 +29,7 @@ class ShowSeeder extends Seeder
         ],
 
         ['title' => 'Solar Opposites',
-        'image' => 'images/solar.png',
+        'image' => 'solar.png',
         'genre' => 'Adult Animation',
         'overview' => 'A family of aliens move to middle America, where they debate whether life is better there or on their home planet.',
         'where_to_watch' => 'Disney+',
@@ -41,7 +41,7 @@ class ShowSeeder extends Seeder
         ],
 
         ['title' => 'Love,Death & Robots',
-        'image' => 'images/LDR.png',
+        'image' => 'LDR.png',
         'genre' => 'Adult Animation, Action',
         'overview' => 'A collection of animated short stories that span various genres including science fiction, fantasy, horror and comedy.',
         'where_to_watch' => 'Netflix',
@@ -53,7 +53,7 @@ class ShowSeeder extends Seeder
         ],
 
         ['title' => 'The Legend of Vox Machina',
-        'image' => 'images/VM.png',
+        'image' => 'VM.png',
         'genre' => 'Action, Adventure, Adult Animation',
         'overview' => 'After saving the realm from evil and destruction at the hands of the most terrifying power couple in Exandria, Vox Machina is faced with saving the world once again-this time, from a sinister group of dragons known as the Chroma Conclave.',
         'where_to_watch' => 'Prime Video',
@@ -65,7 +65,7 @@ class ShowSeeder extends Seeder
         ],
 
         ['title' => 'Vinland Saga',
-        'image' => 'images/Vinland.png',
+        'image' => 'Vinland.png',
         'genre' => 'Anime, Action',
         'overview' => 'Following a tragedy, Thorfinn embarks on a journey with the man responsible for it to take his life in a duel as a true and honorable warrior to pay homage.',
         'where_to_watch' => 'Prime Video',

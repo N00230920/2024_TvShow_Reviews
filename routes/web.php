@@ -23,7 +23,7 @@ Route::get('/shows/create',[ShowController::class, 'create'])->name('shows.creat
 Route::get('/shows/{show}',[ShowController::class, 'show'])->name('shows.show');
 Route::post('/shows',[ShowController::class, 'store'])->name('shows.store');
 Route::get('/shows/{show}/edit',[ShowController::class, 'edit'])->name('shows.edit');
-// Route::get('/shows/{show}',[ShowController::class, 'update'])->name('shows.update');
+Route::put('/shows/{show}',[ShowController::class, 'update'])->name('shows.update');
 Route::delete('/shows/{show}',[ShowController::class, 'destroy'])->name('shows.destroy');
 
 require __DIR__.'/auth.php';

@@ -11,7 +11,7 @@
     <!-- Show Cover Image -->
     <div class="overflow-hidden rounded-lg mb-4 flex justify-center"> 
         <!-- Image is further restricted to a smaller size -->
-        <img src="{{ asset('images/shows/'. $image) }}" alt="{{ $title }}" class="w-full max-w-xs h-auto object-cover"> 
+        <img src="{{ asset('images/shows/' . $image) }}" alt="{{ $title }}" class="w-full max-w-xs h-auto object-cover"> 
         <!-- Restrict image to max-w-xs (20rem) and ensure responsiveness -->
     </div>
 

@@ -11,10 +11,24 @@ class ShowController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $shows = Show::all(); //Fetches all shows
-        return view('shows.index', compact('shows')); //return the view with shows
+
+
+        $title = $request->input('title');
+        
+        $query = Show::query();
+
+        if (!empty($title)) {
+            $query->where('title', 'LIKE', "%{$title}%");
+        }
+
+        $shows = $query->get();
+
+        return view('shows.index', [
+            'shows' => $shows,
+            'title' => $title,  
+        ]);
     }
 
     /**
@@ -34,13 +48,14 @@ class ShowController extends Controller
         $request->validate([
             'title'=>'required',
             'image'=>'required|image|mimes:jpeg,png,jgp,gif|max:2048',
-            'genre'=>'required',
+            'genre'=>'required|string',
             'overview'=>'required|max:1000',
             'where_to_watch'=>'required|max:50',
             'number_of_episodes'=>'required|integer',
-            'air_date'=>'required|integer|max:3000',
-            'end_date'=>'required|integer|max:3000',
+            'air_date'=>'required|integer',
+            'end_date'=>'required|integer',
         ]);
+
 
         // check if the image is uploaded and handle it
         if ($request->hasFile('image')) {
@@ -57,11 +72,10 @@ class ShowController extends Controller
             'number_of_episodes' => $request->number_of_episodes,
             'air_date' => $request->air_date,
             'end_date' => $request->end_date,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+
+        ]);       
         // redirect to the index page with a successful message
-        return to_route('shows.index')->with('sucess', 'Show created successfully!');
+        return to_route('shows.index')->with('success', 'Show created successfully!');
     }
 
     /**
@@ -69,7 +83,7 @@ class ShowController extends Controller
      */
     public function show(Show $show)
     {
-        return view('shows.show')->with('show',$show);
+        return view('shows.show') -> with('show' , $show);
     }
 
     /**
@@ -77,7 +91,7 @@ class ShowController extends Controller
      */
     public function edit(Show $show)
     {
-        //
+        return view('shows.edit', compact('show'));
     }
 
     /**
@@ -85,7 +99,20 @@ class ShowController extends Controller
      */
     public function update(Request $request, Show $show)
     {
-        //
+        $validatedData  = $request->validate([
+            'title'=>'required',
+            'image'=>'image|mimes:jpeg,png,jgp,gif',
+            'genre'=>'required',
+            'overview'=>'required|max:1000',
+            'where_to_watch'=>'required|max:50',
+            'number_of_episodes'=>'required|integer',
+            'air_date'=>'required',
+            'end_date'=>'required',
+        ]);
+
+        $show->update($validatedData);
+
+        return redirect()->route('shows.index')->with('success', 'Show updated successfully');
     }
 
     /**
@@ -93,7 +120,10 @@ class ShowController extends Controller
      */
     public function destroy(Show $show)
     {
-        //
+
+        $show->delete();
+
+        return redirect()->route('shows.index')->with('success', 'Show deleted successfully!');
     }
 
     /**
