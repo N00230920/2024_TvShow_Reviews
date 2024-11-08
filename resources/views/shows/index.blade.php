@@ -24,7 +24,7 @@
                     <h3 class="font-semibold text-lg mb-4">List of Shows:</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach($shows as $show)
-                            <div class = "border p-4 rounded-lg shadow-md">
+                            <div class = "border p-4 rounded-lg bg-sky-200 shadow-md">
                                 <a href="{{ route('shows.show',$show) }}">
                                     <x-show-card
                                         :title="$show->title"
@@ -40,7 +40,7 @@
                                 <!-- Edit and Delete Buttons -->
                                 <div class="mt-4 flex space-x-2">
                                     <!-- Edit Button route to shows.edit and recieves the $show object so it knows which show is for editing -->
-                                    <a href="{{ route('shows.edit', $show) }}" class="text-gray-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">
+                                    <a href="{{ route('shows.edit', $show) }}" class="text-gray-600 bg-teal-400 hover:bg-teal-200 font-bold py-2 px-4 rounded">
                                         Edit 
                                     </a>
                                 
@@ -49,7 +49,7 @@
                                     <form action="{{ route('shows.destroy', $show)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this show?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-gray-600 font-bold py-2 px-4 rounded">
+                                        <button type="submit" class="bg-rose-400 hover:bg-rose-300 text-gray-600 font-bold py-2 px-4 rounded">
                                             Delete
                                         </button>
                                     </form>
