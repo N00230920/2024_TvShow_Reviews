@@ -9,6 +9,7 @@ class Show extends Model
 {
     use HasFactory;
 
+     // Specifies the attributes that can be mass-assigned
     protected $fillable = [
         'title',
         'genre',

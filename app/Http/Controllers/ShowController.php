@@ -79,7 +79,7 @@ class ShowController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the shows on the page.
      */
     public function show(Show $show)
     {
@@ -87,7 +87,7 @@ class ShowController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified show selected.
      */
     public function edit(Show $show)
     {
@@ -95,7 +95,7 @@ class ShowController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the show in the database.
      */
     public function update(Request $request, Show $show)
     {
@@ -116,7 +116,7 @@ class ShowController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the show data from the database.
      */
     public function destroy(Show $show)
     {

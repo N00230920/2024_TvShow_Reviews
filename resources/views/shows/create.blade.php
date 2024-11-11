@@ -10,6 +10,7 @@
             <div class="bg-sky-100 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">Add New Book</h3>
+                    
                     <!-- Using the ShowFrom component for Show creation -->
                     <x-show-form
                         :action="route('shows.store')"

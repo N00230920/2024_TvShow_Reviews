@@ -1,10 +1,12 @@
 <x-app-layout>
+    <!-- Header title, displayed as "All shows" -->
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('All shows') }}
         </h2>
     </x-slot>
 
+    <!-- Show details component, with attributes like title, image, genre, etc -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

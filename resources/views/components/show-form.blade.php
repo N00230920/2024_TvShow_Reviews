@@ -1,4 +1,5 @@
 @props(['action', 'method', 'show'])
+<!-- Define properties for the form: action URL, HTTP method, and show data -->
 
 <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -7,7 +8,7 @@
     @endif
     
 
-    <!-- Insert title -->
+    <!-- Title input field -->
         <div class="mb-4">
             <label for="title" class="block text-sm text-gray-700">Title</label>
             <input
@@ -23,7 +24,7 @@
         @enderror
     </div>
 
-    <!-- Insert genre -->
+    <!-- Genre dropdown -->
     <div class="mb-4">
             <label for="genre" class="block text-sm text-gray-700">Genre</label>
             <select id="genre" class="rounded mb-2" name="genre">
@@ -44,7 +45,7 @@
         @enderror
     </div>
 
-    <!-- Insert overview -->
+    <!-- Overview input -->
     <div class="mb-4">
             <label for="overview" class="block text-sm text-gray-700">Overview</label>
             <input
@@ -59,7 +60,7 @@
         @enderror
     </div>
 
-    <!-- insert image -->
+    <!-- Image upload field -->
     <div class="mb-4">
         <label for="image" class="block text-sm font-medium text-gray-700">Show Cover Image</label>
         <input
@@ -79,7 +80,7 @@
         </div>
     @endisset
 
-    <!-- Insert where_to_watch -->
+    <!-- Where to Watch input field -->
     <div class="mb-4">
             <label for="where_to_watch" class="block text-sm text-gray-700">Where to watch</label>
             <input
@@ -96,7 +97,8 @@
     </div>
 
     <div class="flex item-row gap-5">
-    <!-- Insert number_of_episodes -->
+
+    <!-- Number of Episodes input field -->
     <div class="mb-4">
         <label for="number_of_episodes" class="block text-sm text-gray-700">Number of episodes</label>
         <input
@@ -111,7 +113,7 @@
         @enderror
     </div>
 
-    <!-- Insert air date -->
+    <!-- Air Date input field -->
     <div class="mb-4">
         <label for="air_date" class="block text-sm text-gray-700">Air Date:</label>
         <input
@@ -126,8 +128,8 @@
         @enderror
     </div>
 
-    <!-- Insert end date -->
-    <div class="mb-4">
+        <!-- End Date input field -->
+        <div class="mb-4">
         <label for="end_date" class="block text-sm text-gray-700">End Date:</label>
         <input
         type="integer"

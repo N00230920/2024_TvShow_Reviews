@@ -14,11 +14,14 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
         <!-- alert success is a component that i created to display a success message that is sent by the controller to give feedback to the user-->
         <x-alert-success>
             {{ session('success') }},
         </x-alert-success>
 
+
+        <!-- Display for Show card components  -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">List of Shows:</h3>
