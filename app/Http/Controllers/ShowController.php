@@ -12,8 +12,11 @@ class ShowController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-
+    {   
+        // fetch all shows
+        // $shows = Show::all();
+        //Return the view with shows
+        // return view('shows.index', compact('shows'));
 
         $title = $request->input('title');
         
@@ -36,6 +39,9 @@ class ShowController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('shows.index')->with('error','Access denied.');
+        }
         return view('shows.create');
     }
 

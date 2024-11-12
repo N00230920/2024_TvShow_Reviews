@@ -40,23 +40,25 @@
                                         :end_date="$show->end_date"
                                     />   
                                 </a>
-                                <!-- Edit and Delete Buttons -->
-                                <div class="mt-4 flex space-x-2">
-                                    <!-- Edit Button route to shows.edit and recieves the $show object so it knows which show is for editing -->
-                                    <a href="{{ route('shows.edit', $show) }}" class="text-gray-600 bg-teal-400 hover:bg-teal-200 font-bold py-2 px-4 rounded">
-                                        Edit 
-                                    </a>
-                                
-                                    <!-- Delete button (you need a from to send to DELETE request) -->
-                                    <!-- Delete Button route to shows.destroy, passing $show object -->
-                                    <form action="{{ route('shows.destroy', $show)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this show?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="bg-rose-400 hover:bg-rose-300 text-gray-600 font-bold py-2 px-4 rounded">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </div>
+                                @if(auth()->user()->role === 'admin')
+                                    <!-- Edit and Delete Buttons -->
+                                    <div class="mt-4 flex space-x-2">
+                                        <!-- Edit Button route to shows.edit and recieves the $show object so it knows which show is for editing -->
+                                        <a href="{{ route('shows.edit', $show) }}" class="text-gray-600 bg-teal-400 hover:bg-teal-200 font-bold py-2 px-4 rounded">
+                                            Edit 
+                                        </a>
+                                    
+                                        <!-- Delete button (you need a from to send to DELETE request) -->
+                                        <!-- Delete Button route to shows.destroy, passing $show object -->
+                                        <form action="{{ route('shows.destroy', $show)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this show?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-rose-400 hover:bg-rose-300 text-gray-600 font-bold py-2 px-4 rounded">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
                             </div>
                         @endforeach
                     </div>     

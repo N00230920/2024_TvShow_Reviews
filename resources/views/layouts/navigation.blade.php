@@ -20,9 +20,12 @@
                         {{ __('View All Shows') }}
                     </x-nav-link>
 
+                    <!-- The create link only appears for the admin users -->
+                    @if(auth()->user()->role === 'admin')
                     <x-nav-link :href="route('shows.create')" :active="request()->routeIs('shows.create')">
                         {{ __('Create New Show') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
