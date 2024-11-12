@@ -40,7 +40,7 @@ class ShowSeeder extends Seeder
         'updated_at' => $currentTimestamp
         ],
 
-        ['title' => 'Love,Death & Robots',
+        ['title' => 'Love,Death and Robots',
         'image' => 'LDR.png',
         'genre' => 'Adult Animation, Action',
         'overview' => 'A collection of animated short stories that span various genres including science fiction, fantasy, horror and comedy.',
