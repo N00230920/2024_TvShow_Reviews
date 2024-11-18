@@ -48,7 +48,7 @@ class ShowController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Show $show)
     {
         //  validate input
         $request->validate([
@@ -89,7 +89,12 @@ class ShowController extends Controller
      */
     public function show(Show $show)
     {
-        return view('shows.show') -> with('show' , $show);
+        // Load the show with its associated reviews and the user who made each review
+        $show->load('reviews.user'); //Assuming each review has a 'user_id' for the reviewer
+        return view('shows.show', compact('show'));
+        // Compact is shorthand for this
+        // return view('shows.show',['show' => $show]);
+        // return view('shows.show') -> with('show' , $show);
     }
 
     /**

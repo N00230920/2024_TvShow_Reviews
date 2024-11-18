@@ -14,9 +14,9 @@ class AdminSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Admin User',
-            'email' => 'admin' . time() . '@example.com', //Faking a unique email using timestamp
-            'password' => Hash::make('password'), //Password is hashed for security.
+            'name' => '',
+            'email' => '' . time() . '', //Faking a unique email using timestamp
+            'password' => Hash::make(''), //Password is hashed for security.
             'role' => 'admin',
         ]);
     }
