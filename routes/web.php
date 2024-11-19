@@ -27,12 +27,13 @@ Route::get('/shows/{show}/edit',[ShowController::class, 'edit'])->name('shows.ed
 Route::put('/shows/{show}',[ShowController::class, 'update'])->name('shows.update');
 Route::delete('/shows/{show}',[ShowController::class, 'destroy'])->name('shows.destroy');
 
-require __DIR__.'/auth.php';
-
 // the code below creates all routes for reviews 
 Route::resource('reviews', ReviewController::class);
 
 // I am overwriting the usual store route, as I want it to accept a show parameter.
 // this route is designed to take a show parameter, so it expects shows/{show}/reviews in the URL.
 // The route name 'reviews.store' is what we mention in the view
-Route::post('shows/{show}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+Route::post('/shows/{show}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+require __DIR__.'/auth.php';
+

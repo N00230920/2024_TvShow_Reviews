@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\Show;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -57,15 +58,28 @@ class ReviewController extends Controller
      */
     public function edit(Review $review)
     {
-        //
+        // Check if the user is the owner or an admin
+        if (auth()->user()->id !== $review->user_id && auth()->user()->role !== 'admin') {
+            return redirect()->route('shows.index')->with('error', 'Access denied.');
+        }
+
+        // I am passing the show and the review object to  the view, as they are both needed
+        return view('reviews.edit', compact('review'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Review $review)
     {
-        //
+        //Checking to ensure the user is authorised to update this content
+        $review->update($request->only(['rating', 'comment']));
+        
+        //once its updated in the DB, redirect somewhere thet makes sense for your application
+        return redirect()->route('shows.show', $review->show_id)
+                        ->with('success', 'Review updated successfully.');
+
     }
 
     /**
