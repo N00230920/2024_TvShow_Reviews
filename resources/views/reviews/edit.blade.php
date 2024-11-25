@@ -16,10 +16,11 @@
                         :action="route('reviews.update', $review)"
                         :method="'PUT'"
                         :review="$review"
-                        {{-- :book="$book" --}}
+                        {{-- :show="$show" --}}
                     />
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+

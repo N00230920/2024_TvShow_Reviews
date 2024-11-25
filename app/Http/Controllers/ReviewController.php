@@ -46,7 +46,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the Review.
      */
     public function show(Review $review)
     {
@@ -54,7 +54,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the Review.
      */
     public function edit(Review $review)
     {
@@ -69,7 +69,7 @@ class ReviewController extends Controller
 
 
     /**
-     * Update the specified resource in storage.
+     * Update the Review in storage.
      */
     public function update(Request $request, Review $review)
     {
@@ -83,10 +83,13 @@ class ReviewController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the Review from storage.
      */
     public function destroy(Review $review)
     {
-        //
+        $review->delete();
+
+        return redirect()->route('shows.show', $review->show_id)
+                        ->with('success', 'Review deleted successfully!');
     }
 }

@@ -43,13 +43,12 @@
                                             {{ __('Edit Review') }}
                                         </a>
 
-                                        <form method="POST" action="{{ route('reviews.destroy', $review) }}">
+                                        <form action="{{ route('reviews.destroy', $review) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this review?');">
                                             @csrf
                                             @method('delete')
-                                            <x-danger-button :href="route('reviews.destroy', $review)" 
-                                                onclick="event.preventDefault(); this.closest('form').submit();">
-                                                {{ __('Delete Review') }}
-                                            </x-danger-button>
+                                            <button type="submit" class="bg-rose-400 hover:bg-rose-300 text-gray-600 font-bold py-2 px-4 rounded">
+                                                Delete
+                                            </button>
                                         </form>
                                     @endif
                                 <li>
