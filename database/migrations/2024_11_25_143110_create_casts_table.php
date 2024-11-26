@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('casts', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image')->nullable(); //For profile headshot
+            
             $table->timestamps();
         });
     }

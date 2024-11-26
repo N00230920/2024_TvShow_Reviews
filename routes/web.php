@@ -35,5 +35,7 @@ Route::resource('reviews', ReviewController::class);
 // The route name 'reviews.store' is what we mention in the view
 Route::post('/shows/{show}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
+Route::resource('casts', CastController::class)->middleware('auth');
+
 require __DIR__.'/auth.php';
 

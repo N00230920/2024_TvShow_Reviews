@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('cast_show', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cast_id')->constrained()->onDelete('cascade');
+            $table->foreignId('show_id')->constrained()->onDelete('cascade');
+            $table->string('character')->nullable(); //Paragraph about the cast
             $table->timestamps();
         });
     }
@@ -25,3 +28,4 @@ return new class extends Migration
         Schema::dropIfExists('cast_show');
     }
 };
+

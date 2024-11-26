@@ -15,7 +15,9 @@ class ShowSeeder extends Seeder
     public function run(): void
     {
         $currentTimestamp = Carbon::now();
-        Show::insert([
+
+        //Create a list of shows
+        $shows = [
         ['title' => 'Adventure Time',
         'image' => 'Adventure_Time.png',
         'genre' => 'Action',
@@ -76,6 +78,20 @@ class ShowSeeder extends Seeder
         'updated_at' => $currentTimestamp
         ]
 
-        ]);
+        ];
+
+        foreach ($shows as $showData)
+        {
+            //insert the show into table 
+            $show = Show::create(array_merge($showData, ['created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp]));
+
+            //randomly select 2 cast members
+            //So CastSeeder must be run before ShowSeeder
+            $casts = Cast::inRandomOrder()->take(2)->pluck('id');
+
+            // Attach cast to shows
+            // Laravel attach() function insertes a row into the pivot table indicating this show has this cast member
+            $show->cast()->attach($cast);
+        }
     }
 }

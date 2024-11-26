@@ -27,4 +27,10 @@ class Show extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    //Show can have many cast members
+    public function casts()
+    {
+        return $this->hasMany(Cast::class);
+    }
 }
