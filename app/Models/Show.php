@@ -29,8 +29,8 @@ class Show extends Model
     }
 
     //Show can have many cast members
-    public function casts()
+    public function showcasts()
     {
-        return $this->hasMany(Cast::class);
+        return $this->belongsToMany(Cast::class);
     }
 }

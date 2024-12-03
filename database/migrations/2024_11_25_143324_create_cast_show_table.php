@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('cast_show', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cast_id')->constrained()->onDelete('cascade');
             $table->foreignId('show_id')->constrained()->onDelete('cascade');
-            $table->string('character')->nullable(); //Paragraph about the cast
+            $table->foreignId('cast_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

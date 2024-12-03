@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->nullable(); //For profile headshot
-            
+            $table->string('Character')->nullable(); //For Character played   
             $table->timestamps();
         });
     }

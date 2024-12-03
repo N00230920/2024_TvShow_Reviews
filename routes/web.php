@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShowController;
+use App\Http\Controllers\CastController;
 use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
@@ -36,6 +37,11 @@ Route::resource('reviews', ReviewController::class);
 Route::post('/shows/{show}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 Route::resource('casts', CastController::class)->middleware('auth');
+
+Route::get('/casts', [CastController::class, 'index'])->name('casts.index');
+Route::get('/casts/{cast}/edit',[ShowController::class, 'edit'])->name('cast.edit');
+Route::put('/casts/{cast}',[ShowController::class, 'update'])->name('cast.update');
+Route::delete('/casts/{cast}',[ShowController::class, 'destroy'])->name('cast.destroy');
 
 require __DIR__.'/auth.php';
 
