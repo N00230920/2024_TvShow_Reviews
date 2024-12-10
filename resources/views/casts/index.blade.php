@@ -4,13 +4,8 @@
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
                     {{ __('All Cast Members') }}
                 </h2>
-
-                <!-- Search Bar
-                <form method="GET" action="{{ route('casts.index') }}" class="inline-form">
-                    <input class="px-2 py-2 bg-red-0 border border-black-500 text-green-700 rounded-md" type="text" name="title" id="title" value="{{ request('title') }}" placeholder="Search title..." >
-                </form>
             </div>
-        </x-slot>  -->
+        </x-slot> 
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -28,11 +23,11 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach($casts as $cast)
                             <div class = "border p-4 rounded-lg bg-sky-200 shadow-md">
-                                <a href="{{ route('casts.index',$cast) }}">
+                                <a href="{{ route('casts.show',$cast) }}">
                                     <x-cast-card
-                                        :title="$cast->name"
+                                        :name="$cast->name"
                                         :image="$cast->image"
-                                        :genre="$cast->character"
+                                        :character="$cast->character"
                                     />   
                                 </a>
                                 @if(auth()->user()->role === 'admin')

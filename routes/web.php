@@ -39,9 +39,12 @@ Route::post('/shows/{show}/reviews', [ReviewController::class, 'store'])->name('
 Route::resource('casts', CastController::class)->middleware('auth');
 
 Route::get('/casts', [CastController::class, 'index'])->name('casts.index');
-Route::get('/casts/{cast}/edit',[ShowController::class, 'edit'])->name('cast.edit');
-Route::put('/casts/{cast}',[ShowController::class, 'update'])->name('cast.update');
-Route::delete('/casts/{cast}',[ShowController::class, 'destroy'])->name('cast.destroy');
+Route::get('/casts/create',[CastController::class, 'create'])->name('casts.create');
+Route::get('/casts/{cast}',[CastController::class, 'show'])->name('casts.show');
+Route::post('/casts',[CastController::class, 'store'])->name('casts.store');
+Route::get('/casts/{cast}/edit',[CastController::class, 'edit'])->name('cast.edit');
+Route::put('/casts/{cast}',[CastController::class, 'update'])->name('cast.update');
+Route::delete('/casts/{cast}',[CastController::class, 'destroy'])->name('cast.destroy');
 
 require __DIR__.'/auth.php';
 

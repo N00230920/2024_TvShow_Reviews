@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cast;
 use Illuminate\Http\Request;
+use App\Models\Show;
 
 class CastController extends Controller
 {
@@ -38,7 +39,7 @@ class CastController extends Controller
         }
 
         // If I want to add shows to an cast during Create cast, I will need all shows
-        $shows = show::all();
+        $shows = Show::all();
         return view('casts.create', compact('shows'));
     }
 
@@ -54,7 +55,7 @@ class CastController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'image' => 'nullable|image|max:2048',
-            'bio' => 'nullable|string|max:1000',
+            'character' => 'nullable|string|max:1000',
             'shows' => 'array', // Optional: List of shows to attach
         ]);
 
@@ -122,7 +123,7 @@ class CastController extends Controller
         }
 
         return redirect()->route('casts.index')
-            ->with('success', 'cast updated successfully.');
+            ->with('success', 'Cast updated successfully.');
     }
 
     /**
@@ -134,6 +135,6 @@ class CastController extends Controller
         $cast->delete();
 
         return redirect()->route('casts.index')
-            ->with('success', 'cast deleted successfully.');
+            ->with('success', 'Cast deleted successfully.');
     }
 }
