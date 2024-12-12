@@ -30,7 +30,7 @@
                         {{ __('Create New Show') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('casts.create')" :active="request()->routeIs('cast.create')">
+                    <x-nav-link :href="route('casts.create')" :active="request()->routeIs('casts.create')">
                         {{ __('Create New Cast') }}
                     </x-nav-link>
                     @endif

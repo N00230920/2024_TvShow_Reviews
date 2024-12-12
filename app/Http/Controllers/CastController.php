@@ -59,6 +59,8 @@ class CastController extends Controller
             'shows' => 'array', // Optional: List of shows to attach
         ]);
 
+        $cast -> shows()->sync($request->shows);
+
         // Get the image from the request
         if ($request->hasFile('image')) {
             $imageName = uniqid() . '.' . $request->image->extension();
@@ -66,13 +68,14 @@ class CastController extends Controller
             $validated['image'] = $imageName;
         }
 
-        $cast = cast::create($validated);
+        $cast = Cast::create($validated);
 
         // Check to see if the user linked shows to the cast
         if ($request->has('shows')) {
             // Attach will create an entry in the pivot table for every show the cast wrote
             $cast->shows()->attach($request->shows);
         }
+
 
         return redirect()->route('casts.index')
             ->with('success', 'cast created successfully.');
@@ -98,10 +101,11 @@ class CastController extends Controller
     public function edit(Cast $cast)
     {
         // Get all the shows
-        $shows = show::all();
-        $castshows = $cast->shows->pluck('id')->toArray(); // IDs of associated shows
+        $shows = Show::all();
+        $casts = Cast::all();
+        $cast_show = $cast->shows->pluck('id')->toArray(); // IDs of associated shows
 
-        return view('casts.edit', compact('cast', 'shows', 'castshows'));
+        return view('casts.edit', compact('shows', 'cast_show', 'casts'));
     }
 
     /**
@@ -118,9 +122,19 @@ class CastController extends Controller
 
         $cast->update($validated);
 
-        if ($request->has('shows')) {
-            $cast->shows()->sync($request->shows);
+        $shows = $request-> input ('shows', []); // Get the list of shows to sync
+
+        // Detach all existing shows
+        $cast->shows()->detach();
+        
+        // Attach the new shows if any
+        if (!empty($shows)) {
+            $cast->shows()->attach($shows);
         }
+
+        // if ($request->has('shows')) {
+        //     $cast->shows()->sync($request->shows);
+        // }
 
         return redirect()->route('casts.index')
             ->with('success', 'Cast updated successfully.');

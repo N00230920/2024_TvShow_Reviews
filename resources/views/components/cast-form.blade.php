@@ -1,4 +1,4 @@
-@props(['action', 'method', 'show'])
+@props(['action', 'method', 'shows', 'casts'])
 <!-- Define properties for the form: action URL, HTTP method, and show data -->
 
 <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
@@ -61,21 +61,25 @@
     @endisset
 
 <div>
+
+<h3 class="font-semibold text-lg mb-4 pt-5">Assign this Cast member to existing Shows</h3>
+<div>
+    @foreach ($shows as $show)
+    <div>
+        <input type="checkbox" id="show_{{ $show->id }}" name="shows[]" value="{{ $show->id }}"
+        @if (isset($cast) && in_array($show->id, old('shows', $cast->shows->pluck('id')->toArray()))) checked @endif>
+        <label for="show_{{ $show->id }}" class="ml-2">{{ $show->title }}</label>
+    </div>
+    @endforeach
+</div>
+
+
+
     <x-primary-button>
         {{ isset($cast) ? 'Update cast' : 'Add Cast' }}
     </x-primary-button>
 </div>
 
-<h3 class="font-semibold text-lg mb-4 pt-5">Assign this category to existing casts</h3>
-        <div>
-            @foreach ($casts as $cast)
-            <div>
-                <input type="checkbox" id="cast_{{ $cast->id }}" name="casts[]" value="{{ $cast->id }}"
-                @if(isset($categorycasts) && in_array($nailplish->id, $categorycasts)) checked @endif>
-                <label for="cast_{{ $cast->id }}" class="ml-2">{{$cast->name}}</label>
-            </div>
-            @endforeach
-        </div>
 
 </div>
 

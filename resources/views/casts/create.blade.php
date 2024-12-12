@@ -15,6 +15,7 @@
                     <x-cast-form
                         :action="route('casts.store')"
                         :method="'POST'"
+                        :shows="$shows"
                     />
                 </div>
             </div>
