@@ -34,13 +34,13 @@
                                     <!-- Edit and Delete Buttons -->
                                     <div class="mt-4 flex space-x-2">
                                         <!-- Edit Button route to cast.edit and recieves the $cast object so it knows which cast is for editing -->
-                                        <a href="{{ route('cast.edit', $cast) }}" class="text-gray-600 bg-teal-400 hover:bg-teal-200 font-bold py-2 px-4 rounded">
+                                        <a href="{{ route('casts.edit', $cast) }}" class="text-gray-600 bg-teal-400 hover:bg-teal-200 font-bold py-2 px-4 rounded">
                                             Edit 
                                         </a>
                                     
                                         <!-- Delete button (you need a from to send to DELETE request) -->
                                         <!-- Delete Button route to cast.destroy, passing $cast object -->
-                                        <form action="{{ route('cast.destroy', $cast)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this cast?');">
+                                        <form action="{{ route('casts.destroy', $cast)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this cast?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="bg-rose-400 hover:bg-rose-300 text-gray-600 font-bold py-2 px-4 rounded">

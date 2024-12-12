@@ -1,4 +1,4 @@
-@props(['name','image','character'])
+@props(['name','image','character', 'shows'])
 
 <!-- Show Detail Components -->
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300 max-w-xl mx-auto"> 

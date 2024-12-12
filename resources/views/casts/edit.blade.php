@@ -16,6 +16,7 @@
                         :action="route('cast.update', $cast)"
                         :method="'PUT'"
                         :cast="$cast"
+                        :cast_show="$cast_show"
                         />
                 </div>
             </div>

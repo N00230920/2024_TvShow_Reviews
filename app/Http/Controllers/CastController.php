@@ -59,6 +59,8 @@ class CastController extends Controller
             'shows' => 'array', // Optional: List of shows to attach
         ]);
 
+        $cast -> shows()->sync($request->shows);
+
         // Get the image from the request
         if ($request->hasFile('image')) {
             $imageName = uniqid() . '.' . $request->image->extension();
@@ -66,7 +68,7 @@ class CastController extends Controller
             $validated['image'] = $imageName;
         }
 
-        $cast = cast::create($validated);
+        $cast = Cast::create($validated);
 
         // Check to see if the user linked shows to the cast
         if ($request->has('shows')) {
@@ -88,7 +90,6 @@ class CastController extends Controller
         // get all the cast's show IDs from the pivot table
         // then get these shows from the shows table.
         $cast->load('shows');
-
         return view('casts.show', compact('cast'));
     }
 
@@ -99,9 +100,10 @@ class CastController extends Controller
     {
         // Get all the shows
         $shows = show::all();
+        $casts = Cast::all();
         $castshows = $cast->shows->pluck('id')->toArray(); // IDs of associated shows
 
-        return view('casts.edit', compact('cast', 'shows', 'castshows'));
+        return view('casts.edit', compact('shows', 'cast_show', 'casts'));
     }
 
     /**
@@ -118,8 +120,13 @@ class CastController extends Controller
 
         $cast->update($validated);
 
-        if ($request->has('shows')) {
-            $cast->shows()->sync($request->shows);
+        $shows = $request-> input ('shows', []); // Get the list of shows to sync
+        // Detach all existing shows
+        $cast->shows()->detach();
+        
+        // Attach the new shows if any
+        if (!empty($shows)) {
+            $cast->shows()->attach($shows);
         }
 
         return redirect()->route('casts.index')

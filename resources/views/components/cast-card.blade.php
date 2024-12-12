@@ -1,4 +1,4 @@
-@props(['name','image','character'])
+@props(['name','image','character','shows'])
 <!-- Define properties expected to be passed to this component -->
 
 
