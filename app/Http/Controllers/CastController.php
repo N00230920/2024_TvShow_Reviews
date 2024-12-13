@@ -59,7 +59,12 @@ class CastController extends Controller
             'shows' => 'array', // Optional: List of shows to attach
         ]);
 
-        $cast -> shows()->sync($request->shows);
+        // Make a new cast member using the data received in the form
+        $cast = Cast::create($validated);
+
+        // Synchronise up the IDs we received from the checkboxes
+        // E.g add IDs to the list, remove, leave them as they are if unchanged
+        $cast->shows()->sync($request->shows);
 
         // Get the image from the request
         if ($request->hasFile('image')) {
@@ -68,7 +73,7 @@ class CastController extends Controller
             $validated['image'] = $imageName;
         }
 
-        $cast = Cast::create($validated);
+        
 
         // Check to see if the user linked shows to the cast
         if ($request->has('shows')) {
@@ -101,11 +106,17 @@ class CastController extends Controller
     public function edit(Cast $cast)
     {
         // Get all the shows
-        $shows = show::all();
-        $casts = Cast::all();
-        $castshows = $cast->shows->pluck('id')->toArray(); // IDs of associated shows
+        $shows = Show::all();
+        // $cast = Cast::all();
 
-        return view('casts.edit', compact('shows', 'cast_show', 'casts'));
+        $castshows = $cast->shows()->pluck('shows.id')->toArray(); // IDs of associated shows
+
+        foreach($castshows as $castShow){
+            echo $castShow;
+        }
+
+        // return view('casts.edit', compact('shows', 'castshows', 'cast'));
+        return view('casts.edit', compact('cast', 'castshows', 'shows'));
     }
 
     /**

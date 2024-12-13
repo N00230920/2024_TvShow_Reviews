@@ -13,10 +13,11 @@
 
                     <!-- Using the CastForm component for cast creation -->
                     <x-cast-form
-                        :action="route('cast.update', $cast)"
+                        :action="route('casts.update', $cast)"
                         :method="'PUT'"
                         :cast="$cast"
-                        :cast_show="$cast_show"
+                        :castshows="$castshows"
+                        :shows="$shows"
                         />
                 </div>
             </div>

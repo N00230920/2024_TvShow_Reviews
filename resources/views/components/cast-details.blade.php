@@ -20,7 +20,7 @@
     <!-- Emphasizing year with italics and smaller text -->
     
     @if ($cast->shows->isNotEmpty())
-        <h4 class="text-lg font-bold">shows that made {{ $cast->title }}:</h4>
+        <h4 class="text-lg font-bold">Stars in {{ $cast->title }}:</h4>
         <div class="container grid grid-cols-2 mb-5 gap-4">
                     @foreach ($cast->shows as $show)
                         <a href="{{ route('shows.show', $show) }}">
