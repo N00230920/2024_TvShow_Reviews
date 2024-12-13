@@ -90,6 +90,7 @@ class CastController extends Controller
         // get all the cast's show IDs from the pivot table
         // then get these shows from the shows table.
         $cast->load('shows');
+        // $shows = cast->shows
         return view('casts.show', compact('cast'));
     }
 

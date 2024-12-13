@@ -11,11 +11,25 @@
     <!-- Show Cover Image -->
     <div class="overflow-hidden rounded-lg mb-4 flex justify-center"> 
         <!-- Image is further restricted to a smaller size -->
-        <img src="{{ asset('images/shows/' . $image) }}" alt="{{ $name }}" class="w-full max-w-xs h-auto object-cover"> 
+        <img src="{{ asset('images/casts/' . $image) }}" alt="{{ $name }}" class="w-full max-w-xs h-auto object-cover"> 
         <!-- Restrict image to max-w-xs (20rem) and ensure responsiveness -->
     </div>
 
     <!-- character -->
     <h2 class="text-gray-500 text-sm italic mb-4" style="font-size: 1rem;">{{ $character }}</h2> 
     <!-- Emphasizing year with italics and smaller text -->
+    
+    @if ($cast->shows->isNotEmpty())
+        <h4 class="text-lg font-bold">shows that made {{ $title }}:</h4>
+        <div class="container grid grid-cols-2 mb-5 gap-4">
+                    @foreach ($cast->shows as $show)
+                        <a href="{{ route('shows.show', $show) }}">
+                            <x-show-card
+                                :name="$show->name"
+                                :image="$show->image"
+                            />
+                        </a>
+                    @endforeach
+        </div>
+    @endif
 </div>
