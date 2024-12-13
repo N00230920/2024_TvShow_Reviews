@@ -16,6 +16,7 @@
                         :name="$cast->name"
                         :image="$cast->image"
                         :character="$cast->character"
+                        :cast="$cast"
                     />
                 </div>
                     

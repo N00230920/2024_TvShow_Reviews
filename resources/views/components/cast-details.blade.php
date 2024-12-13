@@ -1,4 +1,4 @@
-@props(['name','image','character', 'shows'])
+@props(['name','image','character', 'shows', 'cast'])
 
 <!-- Show Detail Components -->
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300 max-w-xl mx-auto"> 
@@ -20,14 +20,15 @@
     <!-- Emphasizing year with italics and smaller text -->
     
     @if ($cast->shows->isNotEmpty())
-        <h4 class="text-lg font-bold">shows that made {{ $title }}:</h4>
+        <h4 class="text-lg font-bold">shows that made {{ $cast->title }}:</h4>
         <div class="container grid grid-cols-2 mb-5 gap-4">
                     @foreach ($cast->shows as $show)
                         <a href="{{ route('shows.show', $show) }}">
                             <x-show-card
-                                :name="$show->name"
+                                :title="$show->title"
                                 :image="$show->image"
-                            />
+                                :genre="$show->genre"
+                            /> 
                         </a>
                     @endforeach
         </div>

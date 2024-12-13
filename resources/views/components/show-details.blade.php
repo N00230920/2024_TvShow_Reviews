@@ -1,4 +1,4 @@
-@props(['title','image','genre','overview','where_to_watch','number_of_episodes','air_date','end_date'])
+@props(['title','image','genre','overview','where_to_watch','number_of_episodes','air_date','end_date', 'show', 'cast'])
 
 <!-- Show Detail Components -->
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300 max-w-xl mx-auto"> 
@@ -24,4 +24,5 @@
     <!-- Subheading for Overview -->
     <p class="text-gray-700 leading-relaxed">{{ $overview }}</p> 
     <!-- Text is spaced out for readability -->
+
 </div>

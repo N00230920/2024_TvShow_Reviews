@@ -21,6 +21,7 @@
                         :number_of_episodes="$show->number_of_episodes"
                         :air_date="$show->air_date"
                         :end_date="$show->end_date"
+                        :show="$show"
                     />
 
                     {{-- Show Reviews --}}
